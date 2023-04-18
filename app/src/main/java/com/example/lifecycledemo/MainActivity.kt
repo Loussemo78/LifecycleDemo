@@ -3,10 +3,12 @@ package com.example.lifecycledemo
 import android.os.Binder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.lifecycleScope
 import com.example.lifecycledemo.databinding.ActivityMainBinding
 import com.example.lifecycledemo.ui.main.MainFragment
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 /*LifecycleScope est un composant d'architecture Android qui fournit un scope (portée) pour la gestion des coroutines en fonction du cycle de vie d'un composant, tel qu'une activité ou un fragment.
@@ -29,11 +31,8 @@ class MainActivity : AppCompatActivity() {
                 .commitNow()
         }
 
-        lifecycleScope.launch {
-            delay(5000)
-            binding.progressBar.visibility = View.VISIBLE
-            delay(10000)
-            binding.progressBar.visibility = View.GONE
+        lifecycleScope.launch(Dispatchers.IO) {
+           Log.i("MyTag","thread is : ${Thread.currentThread().name}")
 
         }
     }

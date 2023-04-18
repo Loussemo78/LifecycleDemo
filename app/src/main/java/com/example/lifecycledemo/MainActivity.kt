@@ -35,5 +35,15 @@ class MainActivity : AppCompatActivity() {
            Log.i("MyTag","thread is : ${Thread.currentThread().name}")
 
         }
+
+        lifecycleScope.launchWhenCreated {
+
+        }
+        lifecycleScope.launchWhenStarted {
+
+        }
+        lifecycleScope.launchWhenResumed {
+
+        }
     }
 }
